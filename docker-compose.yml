@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  detection:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    container_name: ai-detection
+    ports:
+      - "8000:8000"
+    environment:
+      - USE_GPU=true
+    volumes:
+      - ./backend:/app
+      - ./ai-models/weights:/app/ai-models/weights:ro
+      - ./snapshots:/app/snapshots
+    restart: unless-stopped

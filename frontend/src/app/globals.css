@@ -1,0 +1,539 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   AI SURVEILLANCE PLATFORM - GLOBAL STYLES
+   Cyberpunk Theme with Glassmorphism
+   ============================================ */
+
+:root {
+  /* Core Colors */
+  --cyber-dark: #0B1220;
+  --cyber-darker: #050508;
+  --cyber-black: #000000;
+  --cyber-blue: #00E5FF;
+  --cyber-blue-light: #22D3EE;
+  --cyber-blue-dark: #06B6D4;
+  --cyber-purple: #4F46E5;
+  --cyber-purple-light: #818cf8;
+  --cyber-purple-dark: #7C3AED;
+  --cyber-pink: #ec4899;
+  --cyber-green: #10B981;
+  --cyber-yellow: #F59E0B;
+  --cyber-red: #EF4444;
+  
+  /* Shadcn UI Variables */
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 186 100% 50%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 263 70% 50%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 186 100% 50%;
+  --radius: 0.75rem;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-cyber-dark text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--cyber-blue), var(--cyber-purple));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--cyber-blue-light), var(--cyber-purple-light));
+  }
+  
+  /* Selection */
+  ::selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: white;
+  }
+}
+
+/* ============================================
+   CYBERPUNK COMPONENTS
+   ============================================ */
+
+@layer components {
+  /* Glassmorphism Cards */
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl;
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.37),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-lg;
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    @apply bg-white/10 border-cyber-blue/30;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+  }
+  
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: 
+      0 0 5px var(--cyber-blue),
+      0 0 10px var(--cyber-blue),
+      0 0 20px var(--cyber-blue);
+  }
+  
+  .neon-glow-purple {
+    box-shadow: 
+      0 0 5px var(--cyber-purple),
+      0 0 10px var(--cyber-purple),
+      0 0 20px var(--cyber-purple);
+  }
+  
+  .neon-glow-red {
+    box-shadow: 
+      0 0 5px var(--cyber-red),
+      0 0 10px var(--cyber-red),
+      0 0 20px var(--cyber-red);
+  }
+  
+  .neon-glow-green {
+    box-shadow: 
+      0 0 5px var(--cyber-green),
+      0 0 10px var(--cyber-green),
+      0 0 20px var(--cyber-green);
+  }
+  
+  /* Cyberpunk Text */
+  .cyber-text {
+    @apply font-mono tracking-wider uppercase;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  
+  .cyber-text-gradient {
+    background: linear-gradient(135deg, var(--cyber-blue) 0%, var(--cyber-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Scanning Effects */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+    animation: scan 3s linear infinite;
+  }
+  
+  /* Grid Pattern Background */
+  .cyber-grid-bg {
+    background-image: 
+      linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Holographic Effect */
+  .holographic {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 212, 255, 0.1) 0%,
+      rgba(168, 85, 247, 0.1) 50%,
+      rgba(236, 72, 153, 0.1) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Threat Level Indicators */
+  .threat-low {
+    @apply border-cyber-green text-cyber-green;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  }
+  
+  .threat-medium {
+    @apply border-cyber-yellow text-cyber-yellow;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  }
+  
+  .threat-high {
+    @apply border-cyber-red text-cyber-red;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+    animation: threat-pulse 1.5s ease-in-out infinite;
+  }
+  
+  .threat-critical {
+    @apply border-red-900 bg-red-900/20 text-red-400;
+    box-shadow: 0 0 20px rgba(127, 29, 29, 0.5);
+    animation: alert-pulse 1s ease-in-out infinite;
+  }
+  
+  /* AI Status Indicators */
+  .ai-status-active {
+    @apply relative;
+  }
+  
+  .ai-status-active::before {
+    content: '';
+    @apply absolute w-2 h-2 rounded-full bg-cyber-green;
+    top: 50%;
+    left: -12px;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px var(--cyber-green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  .ai-status-processing {
+    @apply relative;
+  }
+  
+  .ai-status-processing::before {
+    content: '';
+    @apply absolute w-2 h-2 rounded-full bg-cyber-yellow;
+    top: 50%;
+    left: -12px;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px var(--cyber-yellow);
+    animation: blink 1s step-end infinite;
+  }
+  
+  /* HUD Elements */
+  .hud-corner {
+    position: relative;
+  }
+  
+  .hud-corner::before,
+  .hud-corner::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cyber-blue);
+  }
+  
+  .hud-corner::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .hud-corner::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+  }
+  
+  /* Data Stream Effect */
+  .data-stream {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 212, 255, 0.1) 50%,
+      transparent 100%
+    );
+    animation: data-stream 2s linear infinite;
+  }
+  
+  /* Loading Skeleton */
+  .skeleton-cyber {
+    @apply bg-white/10 rounded;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 25%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Button Variants */
+  .btn-cyber {
+    @apply relative px-6 py-3 font-mono text-sm uppercase tracking-wider;
+    @apply bg-transparent border border-cyber-blue text-cyber-blue;
+    @apply transition-all duration-300 overflow-hidden;
+  }
+  
+  .btn-cyber:hover {
+    @apply bg-cyber-blue/10 text-cyber-blue-light;
+    box-shadow: 
+      0 0 20px rgba(0, 212, 255, 0.3),
+      inset 0 0 20px rgba(0, 212, 255, 0.1);
+  }
+  
+  .btn-cyber::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
+  
+  .btn-cyber:hover::before {
+    transform: translateX(100%);
+  }
+  
+  /* Radar Animation */
+  .radar {
+    @apply relative w-32 h-32 rounded-full;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+  }
+  
+  .radar::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(0, 212, 255, 0.3) 60deg, transparent 120deg);
+    animation: radar 4s linear infinite;
+  }
+  
+  .radar::after {
+    content: '';
+    @apply absolute inset-2 rounded-full border border-cyber-blue/20;
+  }
+}
+
+@layer components {
+  /* Cyber Grid Background */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(calc(100vh + 100%));
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes threat-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes alert-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes radar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animation-pause {
+    animation-play-state: paused;
+  }
+  
+  .animation-play {
+    animation-play-state: running;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .gpu-accelerate {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  .clip-inset-0 {
+    clip-path: inset(0);
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mask-gradient-b {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+  
+  .mask-gradient-t {
+    mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .cyber-grid-bg {
+    background-size: 30px 30px;
+  }
+  
+  .hud-corner::before,
+  .hud-corner::after {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .glass-panel,
+  .glass-card,
+  .neon-glow,
+  .holographic {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .cyber-text-gradient {
+    -webkit-text-fill-color: black !important;
+    background: none !important;
+  }
+}
